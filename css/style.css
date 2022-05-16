@@ -96,21 +96,18 @@ span.gnb_link a:hover {
   color: #eee;
 }
 
-.header_a.on:after {
-  /* header에 a태그 클릭했을때 언더바 생기게 */
+.gnb_link.under:after {
   content: '';
   position: absolute;
-  display: inline-block;
+  display: block;
+  width: calc(100% - 20px);
+  height: 1px;
   left: 10px;
   bottom: 3px;
-  height: 1px;
-  background: #c7c7c7;
-  transition: background 0.3s;
-}
-.header.dark .header_a.on:after {
+  transition: 0.3s;
   background: #c7c7c7;
 }
-.header.light .header_a.on:after {
+.header.light .gnb_link.under:after {
   background: #898edc;
 }
 
@@ -119,18 +116,24 @@ span.gnb_link a:hover {
   width: 180px;
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: -20px;
   opacity: 0;
   transform: translate(-50%, 20px);
-  transition: opacity .3s transform .3s, color .3s;
+  transition: opacity 0.3s, transform 0.3s;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 300;
   font-size: 14.5px;
   line-height: 1.35;
   text-align: center;
-  color: #555;
+  color: #eee;
   word-break: keep-all;
   text-shadow: 0 0 5px rgba(0, 0, 0, .1);
+}
+
+/* hover시 텍스트 보이게 */
+li.gnb:hover .gnb_subtxt {
+  display: block;
+  opacity: 1;
 }
 
 span.gnb_link.gnb_link_r {
@@ -282,18 +285,6 @@ input[type=checkbox]#gnbcheck {
   margin: 0 auto;
   text-align: right;
 }
-
-/* .sc2_detail_wrap {
-  width: 100%;
-  max-width: 1920px;
-  position: relative;
-  margin: 0 auto;
-  padding: 5% 0 5%;
-  box-sizing: border-box;
-  font-size: 0;
-  text-align: right;
-  overflow:hidden;
-} */
 
 h2.sc2_tit {
   position: absolute;
@@ -807,6 +798,11 @@ button.btn_sc3_size span {
   transition: left 1s;
 }
 
+.sc4_color2.on2 + .sc4_placer_wrap {
+  /* blue클릭시 쇼파이미지 오른쪽으로 더 이동 */
+  left: 23.5%;
+}
+
 .sc4_placer {
   display: block;
   width: 100%;
@@ -845,8 +841,7 @@ button.btn_sc3_size span {
   color: #8e897a;
 }
 .sc4_placer_txt2 {
-  /* left: 77.5%; */
-  left: 73.25%;
+  left: 77.5%;
   color: #526572;
 }
 
@@ -1331,7 +1326,6 @@ a.evtsc2_info_map {
 .evtsc2_box + .evtsc2_box {
   margin-left: 44px;
 }
-
 .btn_evtsc2_img.btn_evtsc2_img_off {
   position: relative;
 }
@@ -1348,6 +1342,21 @@ a.evtsc2_info_map {
 .btn_evtsc2.on .btn_evtsc2_img.btn_evtsc2_img_on {
   opacity: 1;
   z-index: 10;
+  
+/* sc7 컨셉박스 버튼 */
+.btn_evtsc2 .btn_evtsc2_img_off {
+  display: block;
+  transition: .3s;
+}
+.btn_evtsc2 .btn_evtsc2_img_on {
+  display: none;
+  transition: .3s;
+}
+.btn_evtsc2.on .btn_evtsc2_img_on {
+  display: block;
+}
+.btn_evtsc2.on .btn_evtsc2_img_off {
+  display: none;
 }
 
 p.evtsc2_disc {
