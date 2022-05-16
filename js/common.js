@@ -6,44 +6,45 @@ $(function(){
     $(this).addClass("on");
     return false;
   });
+  //헤더 클릭시 section offset을 받아와서 transform추가하기
 
   /* 헤더 스크롤 영역 */
   $(window).scroll(function(){
     let scTop = $(window).scrollTop(); //현재 스크롤 위치
     let wHeight = $(window).height(); //브라우저 화면 높이
-    // console.log(scTop);
 
     $(".section").each(function(){
       // 각 섹션별 offset으로 위치를 받아옴
       let thisOffset = $(this).offset().top;
-      // se1 = 0
-      // se2 =969
-      // se3 =1352.875
-      // se4 =5122.484375
-      // se5 =7038.484375
-      // se6 =8347.53125
-      // se7 =11666.671875
       // 각 센션별로 헤더의 컬러 바꿀때 dark, light 클래스 추가
       // 각 섹션에 도착했을때 그 섹션에 on클래스 추가
-      if (scTop >= 0 && scTop < 969) {
+      //section별로 offset값을 받아와서 만들기 (리팩토링)
+      let sc1Offset = $(".section01").offset().top;
+      let sc2Offset = $(".section02").offset().top;
+      let sc3Offset = $(".section03").offset().top;
+      let sc4Offset = $(".section04").offset().top;
+      let sc5Offset = $(".section05").offset().top;
+      let sc6Offset = $(".section06").offset().top;
+      let sc7Offset = $(".section07").offset().top;
+
+      if (scTop >= sc1Offset && scTop < sc2Offset) {
         $("header").removeClass("light");
         $("header").removeClass("dark");
-      } else if (scTop >= 969 && scTop < 1352) {
+      } else if (scTop >= sc2Offset && scTop < sc3Offset) {
         $("header").removeClass("dark");
         $("header").addClass("light");
-      } else if (scTop >= 1352 && scTop < 5122) {
+      } else if (scTop >= sc3Offset && scTop < sc4Offset) {
         $("header").removeClass("light");
         $("header").addClass("dark");
-      } else if (scTop >= 5122 && scTop < 7038) {
+      } else if (scTop >= sc4Offset && scTop < sc5Offset) {
         $("header").removeClass("dark");
         $("header").addClass("light");
-      } else if (scTop >= 7038 && scTop < 8347) {
+      } else if (scTop >= sc5Offset && scTop < sc6Offset) {
         $("header").removeClass("light");
         $("header").addClass("dark");
+      } else if (scTop >= sc6Offset && scTop < sc7Offset) {
 
-      } else if (scTop >= 8347 && scTop < 11666) {
-
-      } else if (scTop >= 11666) {
+      } else if (scTop >= sc7Offset) {
 
       }
 
@@ -66,7 +67,6 @@ $(function(){
       }
     });
 
-
     // 각 항목별로 offset값을 받아와서 scTop+wHeight값을 매칭시켜서 .on을 추가시키기
     // sc5 동영상 영역 배경부터 적용해보기
     // sc5의 top+wHeight값을 지날때 section5에 on class추가하기
@@ -76,6 +76,48 @@ $(function(){
     } else {
       $(".section05").removeClass("on")
     }
+
+    // 각 항목별로 offset값 받아와서 scTop+wHeight랑 같을 때 on class추가 함수만들어서 사용
+    // 이 함수를 사용하려면 사용하려는 클래스에 scr함수도 추가해줘야함
+    // scr/ scr.on함수를 사용해서 opacity, transform효과 지정
+    let scBottom = scTop + wHeight;
+
+    onAddBottom($(".sc2_tit"));
+    function onAddBottom(className){
+      if (scBottom >= className.offset().top) {
+        className.addClass("on");
+      } else {
+        className.removeClass("on");
+      }
+    }
+    //section02
+    onAddBottom($(".sc2_tit"));
+    onAddBottom($(".sc2_detail_thum"));
+    //section03
+    onAddBottom($(".usp_group_tit"));
+    onAddBottom($(".usp_box_inner"));
+    onAddBottom($(".usp_txt_wrap"));
+    //section04
+    onAddBottom($(".sc4_tit"));
+    onAddBottom($(".sc4_color_wrap"));
+    onAddBottom($(".sc4_color_btn_wrap"));
+    onAddBottom($(".sc4_fm_box"));
+    //section05
+    onAddBottom($(".sc5_img_box"));
+    //section06
+    onAddBottom($(".sc5_tit"));
+    onAddBottom($(".sc5_txt"));
+    onAddBottom($(".gal_l1"));
+    onAddBottom($(".gal_l2"));
+    onAddBottom($(".gal_r1"));
+    onAddBottom($(".gal_r2"));
+    onAddBottom($(".gal_r3"));
+    onAddBottom($(".gal_r4"));
+    //section07
+    onAddBottom($(".evtsc1"));
+    onAddBottom($(".evtsc1_info"));
+    onAddBottom($(".evtsc2_box"));
+    onAddBottom($(".evtsc3"));
 
   });
 
@@ -122,6 +164,13 @@ $(function(){
       $(".btn_sc4_color2").addClass("on");
     }
   });
+
+  //section07 컨셉박스 버튼 클릭시 '.on'추가
+  $(".btn_evtsc2").click(function(){
+    $(".btn_evtsc2").removeClass("on");
+    $(this).addClass("on");
+  });
+
 
 
 });

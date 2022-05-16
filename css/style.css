@@ -187,6 +187,38 @@ header.dark span.gnb_link:hover {
   color: #eee;
 }
 
+/*header mobile button style*/
+input[type=checkbox]#gnbcheck {
+  display: none;
+}
+
+#gnbbtn {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  display: none;
+}
+
+#gnbbtn > span {
+  position: absolute;
+  top: 16px;
+  height: 2px;
+  width: 32px;
+  background: #fff;
+  transform: translateY(-50%);
+}
+
+#gnbbtn >span:nth-child(1) {
+  top: 8px;
+}
+
+#gnbbtn >span:nth-child(3) {
+  top: 24px;
+}
+
 /* section01 : main*/
 .section01 {
   width: 100%;
@@ -220,9 +252,9 @@ header.dark span.gnb_link:hover {
   text-shadow: 0 0 1vw rgba(0, 0, 0, -5);
 }
 .intro1_subtit {
-  margin-top: -4vw;
+  margin-top: -60px;
   font-family: 'Amiri', serif;
-  font-size: 1.5vw;
+  font-size: 18px;
   letter-spacing: -0.05vw;
   line-height: 1;
   color: #b58e70;
@@ -231,7 +263,7 @@ header.dark span.gnb_link:hover {
 .intro1_txt {
   opacity: 0;
   font-weight: 300;
-  font-size: 1.875vw;
+  font-size: 28px;
   letter-spacing: -0.13vw;
   line-height: 1.5;
   color: rgba(236, 236, 236, 0.84);
@@ -267,8 +299,8 @@ h2.sc2_tit {
   position: absolute;
   left: 8.75%;
   top: 40%;
-  font-size: 2vw;
-  letter-spacing: -0.15vw;
+  font-size: 30px;
+  letter-spacing: -0.15px;
   line-height: 1.42;
   color: #686766;
   text-align: left;
@@ -276,10 +308,10 @@ h2.sc2_tit {
 
 small.sc2_subtit {
   display: block;
-  margin-bottom: 1.2vw;
+  margin-bottom: 12px;
   font-family: 'Amiri', serif;
-  font-size: 1.5vw;
-  letter-spacing: -0.05vw;
+  font-size: 23px;
+  letter-spacing: -0.05px;
   line-height: 1;
   color: #888;
   text-align: left;
@@ -287,10 +319,9 @@ small.sc2_subtit {
 
 small.sc2_subtit + span {
   display: inline-block;
-  width: 3vw;
+  width: 40px;
   height: 1px;
-  margin-left: 1.5vw;
-  margin-bottom: 0.1vw;
+  margin-left: 15px;
   vertical-align: middle;
   background: #5c5d67;
 }
@@ -352,9 +383,9 @@ li.sc2_detail_thum {
 }
 
 .sc2_detail_thum h3 {
-  margin-top: 7.5%;
-  font-size: 1vw;
-  letter-spacing: -0.01vw;
+  margin-top: 30px;
+  font-size: 15px;
+  letter-spacing: -0.1px;
   line-height: 1.2;
   text-align: center;
   transition: color 0.7s;
@@ -1301,6 +1332,24 @@ a.evtsc2_info_map {
   margin-left: 44px;
 }
 
+.btn_evtsc2_img.btn_evtsc2_img_off {
+  position: relative;
+}
+
+.btn_evtsc2_img.btn_evtsc2_img_on {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn_evtsc2.on .btn_evtsc2_img.btn_evtsc2_img_on {
+  opacity: 1;
+  z-index: 10;
+}
+
 p.evtsc2_disc {
   margin: 30px auto 0;
   text-align: center;
@@ -1466,5 +1515,32 @@ footer p strong, footer p.policy a {
     transform: scale(1) rotate(0.1deg);
     opacity: 0;
   }
+
+}
+
+/*media query*/
+/*780/ 1024/ 1280*/
+@media screen and (max-width: 1200px) {
+  /*안보이는 부분 아래로 떨어트리기*/
+  /*sec2 - 텍스트랑 이미지 위아래 분리
+  sec3 - 오른쪽 슬라이드 이미지 줄어들기 / 서브섹션 박스들 width: 100%
+  sec4 - 사이즈 줄기
+  sec6 - 이미지 사이즈 줄기
+  sec7 - 사이즈 줄기
+  */
+
+}
+@media screen and (max-width: 930px) {
+/*샌드위치 메뉴로 변경*/
+  /* nav { display : none; } */
+  #gnbbtn { display: block; }
+
+  /*sec3 - 왼쪽 nav 버튼 없애고 오른쪽 이미지 100%
+  sec4 - 버튼 없애고 사진이미지 클릭시 변하게 하기
+  sec6 - 이미지 한줄로 정렬
+  sec7 - 컨셉박스들 한줄로 정렬, 체험존 박스 타이틀이랑 텍스트 세로로 정렬*/
+}
+
+@media screen and (max-width: 780px) {
 
 }
