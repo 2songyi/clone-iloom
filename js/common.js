@@ -8,7 +8,8 @@ $(function(){
   $(".gnb_link a").click(function(){
     let isAni = $("html,body").is(":animated");
     if (!isAni) {
-      $("html, body").animate({scrollTop: $(this.hash).offset().top}, 1500);
+      $("html, body").animate({scrollTop: $(this.hash).offset().top + 1}, 1500);
+      // 세번째 메뉴 눌러서 이동했을때 바로 underbar적용이 안돼서 1 추가함
       return false;
     }
   });
@@ -67,23 +68,6 @@ $(function(){
 
       }
 
-      // 각 섹션이 바닥을 지날때 on class추가하기
-      // if (scTop + wHieght >)
-
-      // scTop에 화면 높이를 더한만큼 하고 그걸 지날때마다 on추가
-
-      // 왼쪽 nav특정 위치(scTop:2000)에서 fixed 클래스 추가 (position:fixed)
-      // (scTop) 2000이상 3750이하 지나면 .end 추가해서 아래쪽에 있도록
-      if (scTop >= 2000 && scTop < 3500) {
-        $(".usp_nav_wrap").removeClass("end");
-        $(".usp_nav_wrap").addClass("fixed");
-      } else if (scTop >= 3500) {
-        $(".usp_nav_wrap").removeClass("fixed");
-        $(".usp_nav_wrap").addClass("end");
-      } else {
-        $(".usp_nav_wrap").removeClass("fixed");
-        $(".usp_nav_wrap").removeClass("end");
-      }
     });
 
     // 각 항목별로 offset값을 받아와서 scTop+wHeight값을 매칭시켜서 .on을 추가시키기
@@ -176,7 +160,27 @@ $(function(){
       return false;
     }
   });
-  // 왼쪽 nav특정 위치(scTop:2000)에서 fixed 클래스 추가 (position:fixed) ->scroll함수 안에서 구현함
+  // 왼쪽 nav fixed 클래스 추가 (position:fixed)
+  // usp_nav_wrap - top
+  $(window).scroll(function(){
+    var scroll = $(window).scrollTop();
+    var sc3_usp_top = $('.sc3_usp_inner').offset().top;
+    var sc3_sub_top = $('.section03_sub').offset().top;
+    var win_h = $(window).height();
+    var scroll_l = $(window).scrollLeft();
+
+  	if (scroll < sc3_usp_top) {
+      $('.usp_nav_wrap').removeClass('fixed end').css({'left':'0px'});
+    }	else if (scroll >= sc3_usp_top && scroll < (sc3_sub_top-win_h*1)) {
+      //inner가 딱 천장에 닿으면 fixed시작
+      // sub 버튼이 나타나기 전까지
+  		$('.usp_nav_wrap').removeClass('end').addClass('fixed').css({'left':-scroll_l+'px'});
+  	} else {
+      $('.usp_nav_wrap').removeClass('fixed').addClass('end').css({'left':'0px'});
+    }
+
+  });
+
 
   //section03 아래 좌우 버튼
   //prev btn
@@ -285,6 +289,5 @@ $(function(){
     $(".btn_evtsc2").removeClass("on");
     $(this).addClass("on");
   });
-
 
 });
