@@ -222,6 +222,29 @@ input[type=checkbox]#gnbcheck {
   top: 24px;
 }
 
+/* mobile close btn */
+#mobile_close_btn {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 10px;
+  right: 10px;
+  display: none;
+}
+
+#mobile_close_btn:before, #mobile_close_btn:after {
+  content: '';
+  position: absolute;
+  height: 1.6px;
+  width: 32px; /*width: 100%;*/
+  top: 16px;
+  background: #ffffff;
+  transform: translateY(-50%) rotate(45deg);
+}
+#mobile_close_btn:before {
+  transform: translateY(-50%) rotate(135deg);
+}
+
 /* section01 : main*/
 .section01 {
   width: 100%;
@@ -1528,7 +1551,9 @@ footer p strong, footer p.policy a {
 @media screen and (max-width: 1200px) {
   /*안보이는 부분 아래로 떨어트리기*/
   /*sec2 - 텍스트랑 이미지 위아래 분리
-  sec3 - 오른쪽 슬라이드 이미지 줄어들기 / 서브섹션 박스들 width: 100%
+  sec3 - 오른쪽 슬라이드 이미지 줄어들기 / 왼쪽 nav margin-left줄이기
+  아래쪽 서브 박스들 사이즈 left줄이기
+  sec5 - 사이즈 줄이
   sec4 - 사이즈 줄기
   sec6 - 이미지 사이즈 줄기
   sec7 - 사이즈 줄기
@@ -1538,7 +1563,38 @@ footer p strong, footer p.policy a {
 @media screen and (max-width: 930px) {
 /*샌드위치 메뉴로 변경*/
   /* nav { display : none; } */
+  /* #gnbbtn { display: block; } */
+
+  input[type=checkbox]#gnbcheck:checked ~ #header #gnb{
+    left: 0;
+  }
+
+  #mobile_close_btn {
+    display: block;
+  }
+
   #gnbbtn { display: block; }
+
+  .gnb_wrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    background: rgba(0,0,0,.8);
+    transition: .5s ease-in-out;
+    z-index: 600;
+  }
+
+  .gnb_wrap ul {
+    padding-top: 50px;
+  }
+
+  .gnb_wrap ul li {
+    width: 100%; /*float해제시키기*/
+    padding-left: 10px;
+    box-sizing: border-box;
+  }
 
   /*sec3 - 왼쪽 nav 버튼 없애고 오른쪽 이미지 100%
   sec4 - 버튼 없애고 사진이미지 클릭시 변하게 하기
