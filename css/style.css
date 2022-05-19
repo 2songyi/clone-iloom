@@ -214,6 +214,10 @@ input[type=checkbox]#gnbcheck {
   transform: translateY(-50%);
 }
 
+header.light #gnbbtn > span {
+  background: black;
+}
+
 #gnbbtn >span:nth-child(1) {
   top: 8px;
 }
@@ -265,6 +269,7 @@ input[type=checkbox]#gnbcheck {
   transform: scale(1) rotate(0deg);
   animation: ani_intro1_bg 8s ease 1 both;
   background-image: url('../img/section01/intro1_bg.jpg');
+  background-position: center;
   background-size: cover;
 }
 
@@ -301,7 +306,7 @@ input[type=checkbox]#gnbcheck {
 .section02 {
   width: 100%;
   min-width: 1200px;
-  min-height: 300px;
+  /* min-height: 300px; */
   position: relative;
   z-index: 3;
   background: #f5f4f2;
@@ -324,12 +329,15 @@ input[type=checkbox]#gnbcheck {
 h2.sc2_tit {
   position: absolute;
   left: 8.75%;
-  top: 40%;
+  top: 50%;
   font-size: 30px;
   letter-spacing: -0.15px;
   line-height: 1.42;
   color: #686766;
   text-align: left;
+}
+h2.sc2_tit.scr.on {
+  transform: translateY(-50%);
 }
 
 small.sc2_subtit {
@@ -679,8 +687,6 @@ button.btn_usp_nav.btn_usp_nav_next:after {
   background-size: contain;
   animation: ani_btn_usp_next 2s linear infinite;
 }
-
-
 
 /* section03 sub */
 .section03_sub {
@@ -1547,25 +1553,58 @@ footer p strong, footer p.policy a {
 }
 
 /*media query*/
-/*780/ 1024/ 1280*/
 @media screen and (max-width: 1200px) {
-  /*안보이는 부분 아래로 떨어트리기*/
-  /*sec2 - 텍스트랑 이미지 위아래 분리
-  sec3 - 오른쪽 슬라이드 이미지 줄어들기 / 왼쪽 nav margin-left줄이기
-  아래쪽 서브 박스들 사이즈 left줄이기
-  sec5 - 사이즈 줄이
-  sec4 - 사이즈 줄기
-  sec6 - 이미지 사이즈 줄기
-  sec7 - 사이즈 줄기
-  */
+  /* section02 */
+  .section02 {
+    min-width: 0px;
+  }
+  /* section03 */
+  /* 이미지 사이즈 줄이고 왼쪽 nav중리기 */
+  .section03 {
+    min-width: 0px;
+  }
+  .sc3_tit {
+    padding-left: 30px;
+  }
+  ul.usp_nav_wrap {
+    width: 372px;/* -150px */
+  }
+  .btn_usp_nav {
+    margin-left: 162px; /*-150px*/
+  }
+  .usp_nav.on .btn_usp_nav1, .usp_nav.on .btn_usp_nav3 {
+    margin-left: 285px;
+  }
+  .usp_nav.on .btn_usp_nav2 {
+    margin-left: 232px;
+  }
+  /* 오른쪽 슬라이드 줄이기 */
+  ul.usp_wrap {
+    /* width: 43%;
+    margin-left: 40%; */
+    /* section03 minwidth를 없애고 사이드바랑 아래 버튼 사이즈 줄이기 */
+  }
+  /* 아래 좌우버튼 */
+  .usp_btnnav_wrap {
+    width: 700px;
+  }
+  /* 아래쪽 박스 두개 */
+  button.btn_sc3_sub {
+    width: 90%;
+  }
+  button.btn_sc3_size {
+    width: 90%;
+  }
+
+  /* section05 */
+  .section05 {
+    min-width: 0;
+  }
 
 }
 @media screen and (max-width: 930px) {
-/*샌드위치 메뉴로 변경*/
-  /* nav { display : none; } */
-  /* #gnbbtn { display: block; } */
-
-  input[type=checkbox]#gnbcheck:checked ~ #header #gnb{
+  /* 샌드위치 메뉴 */
+  input[type=checkbox]#gnbcheck:checked ~ .header .gnb_wrap{
     left: 0;
   }
 
@@ -1584,24 +1623,48 @@ footer p strong, footer p.policy a {
     background: rgba(0,0,0,.8);
     transition: .5s ease-in-out;
     z-index: 600;
+    overflow: hidden;
   }
 
   .gnb_wrap ul {
     padding-top: 50px;
+    float: left;
+    overflow: hidden;
   }
 
   .gnb_wrap ul li {
     width: 100%; /*float해제시키기*/
     padding-left: 10px;
     box-sizing: border-box;
+    float: left;
+    text-align: left;
   }
 
-  /*sec3 - 왼쪽 nav 버튼 없애고 오른쪽 이미지 100%
-  sec4 - 버튼 없애고 사진이미지 클릭시 변하게 하기
-  sec6 - 이미지 한줄로 정렬
-  sec7 - 컨셉박스들 한줄로 정렬, 체험존 박스 타이틀이랑 텍스트 세로로 정렬*/
+  .gnb_link.under:after {
+    display: none;
+  }
+  li.gnb:hover .gnb_subtxt {
+    display: none;
+  }
+  span.gnb_link.gnb_link_r {
+    border: none;
+    padding: 10px;
+  }
+  span.gnb_link.gnb_link_l {
+    margin-left: 20px;
+  }
+  /* header light dark로 바뀔때 색 안바뀌게 */
+  header.light span.gnb_link a {
+    color: #aaa;
+  }
+  header.light span.gnb_link a:hover {
+    color: #eee;
+  }
+
 }
 
 @media screen and (max-width: 780px) {
+  /* section03 */
+
 
 }
