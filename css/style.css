@@ -1596,9 +1596,21 @@ footer p strong, footer p.policy a {
     width: 90%;
   }
 
+  button.btn_sc3_sub span {
+    width: 50%;
+  }
+  button.btn_sc3_sub small.price {
+    position: static;
+  }
+
   /* section05 */
   .section05 {
     min-width: 0;
+  }
+
+  /* section06 */
+  ul.sc6_gal_list {
+    display: block;
   }
 
 }
