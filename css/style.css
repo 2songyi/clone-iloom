@@ -1603,6 +1603,12 @@ footer p strong, footer p.policy a {
     position: static;
   }
 
+  /*section04*/
+  .section04 .sc4_color_btn_wrap {
+    display: none;
+  }
+
+
   /* section05 */
   .section05 {
     min-width: 0;
@@ -1612,6 +1618,22 @@ footer p strong, footer p.policy a {
   ul.sc6_gal_list {
     display: block;
   }
+  ul.sc6_gal_list li.sc6_gal {
+    margin-top: 20%;
+    margin-left: 50px;
+  }
+
+  /*section07*/
+  .section07 .evtsc2 p.evtsc2_info {
+    margin-left: 168px;
+  }
+  .section07 .evtsc2 .evtsc2_box_wrap .evtsc2_box {
+    display: block;
+    margin-left: 168px;
+    margin-right: 20%;
+    margin-top: 20px;
+  }
+
 
 }
 @media screen and (max-width: 930px) {
